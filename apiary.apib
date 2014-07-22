@@ -1,0 +1,59 @@
+FORMAT: 1A
+HOST: http://www.google.com
+VERSION: 0.2
+
+# Pages
+
+# Group Pages
+Basic operation with users Pages
+
+## Pages Collection [/pages]
+### List all Pages [GET]
++ Response 200 (application/json)
+
+        {"pages":
+            [
+                {"id": "53ba7fc872530e577f35c699", "name": "Page numero uno"},
+                {"id": "53c3dbdd72530e32f7503347", "name": "My awesome page"}
+            ]
+        }
+
+### Create a Page [POST]
++ Request (application/json)
+
+        { "name": "New fresh Page" }
+
++ Response 201 (application/json)
+
+        { "id": "53c3dbdd72530e32f7503347", "name": "New fresh Page" }
+
+## Page [/pages/{id}]
+A single Page object with all its details
+
++ Parameters
+    + id (required, string, `53c3dbdd72530e32f7503347`) ... Hash string `id` of the Page to perform action with. Has example value.
+
+### Retrieve a Page [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: The Value
+
+    + Body
+
+            { "id": "53c3dbdd72530e32f7503347", "name": "My awesome page" }
+
+### Update a Page [PUT]
++ Request (application/json)
+
+        { "name": "Updated Page" }
+        
++ Response 200 (application/json)
+
+    + Body
+    
+            { "id": "53c3dbdd72530e32f7503347", "name": "Updated Page" }
+
+### Remove a Page [DELETE]
++ Response 204
