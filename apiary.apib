@@ -1,69 +1,8 @@
 FORMAT: 1A
 HOST: http://www.pages.com
-VERSION: 0.3
+VERSION: 0.2
 
 # Pages
-Content management system
-
-## Allowed HTTPs requests:
-
-- `POST` - Creates or updates a resource
-- `PUT` - Updates a resource
-- `GET` - Retrieves a resource or list of resources
-- `DELETE` - Delete a resource
-
-## Typical Server Responses
-
-- 200 `OK` - The request was successful (some API calls may return 201 instead).
-- 201 `Created` - The request was successful and a resource was created.
-- 204 `No Content` - The request was successful but there is no representation to return (that is, the response is empty).
-- 400 `Bad Request` - The request could not be understood or was missing required parameters.
-- 401 `Unauthorized` - Authentication failed or user does not have permissions for the requested operation.
-- 403 `Forbidden` - Access denied.
-- 404 `Not Found` - Resource was not found.
-- 405 `Method Not Allowed` - Requested method is not supported for the specified resource.
-- 429 `Too Many Requests` - Exceeded GoodData API limits. Pause requests, wait one minute, and try again. 
-- 503 `Service Unavailable` - The service is temporary unavailable (e.g. scheduled Platform Maintenance). Try again later.
-
-
-# Group User
-Users are owners of Pages. User can have many Pages.
-
-## Login [/user/login]
-TIP: V hlavičce odpovědi nastaví cookie tak, aby další requesty mohly probíhat bez zásahu (autentizace se bere z cookie).
-Token vyprší po půl hodině. S každým requestem může v odpovědi přijít aktualizovaný token.
-
-### Login request [POST]
-+ Request (application/json)
-
-            {
-                "login":"user@email.com",
-                "passwordHash":"passwordHash",
-            }
-
-+ Response 200 (application/json)
-    
-    + Headers
-    
-            Set-Cookie:  expires=Mon, 30-Jul-2014 09:12:42 GMT; AuthToken={super-secured-token};
-
-
-## Account [/user/{user_id}]
-Each account have own settings like email, password and other profile preferencies
-
-+ Parameters
-    + user_id (required, string, `53c3dbdd72585e32f7503347`) ... Hash string `id` of the User to which do you want to perform actions
- 
-
-### Retrieve a Account info [GET]
-+ Response 200 (application/json)
-
-        {
-            "id": "53c3dbdd72530e32f7503347", 
-            "email": "some@email.com"
-        }
-
-
 
 # Group Pages
 Basic operation with users Pages
@@ -74,124 +13,43 @@ Basic operation with users Pages
 
         {"pages":
             [
-                {"id": "53ba7fc872530e577f35c699", "name": "Page numero uno", "template_id": "53ba7fc872530e577f35c442"},
-                {"id": "53c3dbdd72530e32f7503347", "name": "My awesome page", "template_id": "53ba7fc872530e577f35c884"}
+                {"id": "53ba7fc872530e577f35c699", "name": "Page numero uno"},
+                {"id": "53c3dbdd72530e32f7503347", "name": "My awesome page"}
             ]
         }
 
 ### Create a Page [POST]
 + Request (application/json)
 
-        { "name": "New fresh Page", "template_id": "53ba7fc872530e577f35c442" }
+        { "name": "New fresh Page" }
 
 + Response 201 (application/json)
 
-        { 
-            "id": "53c3dbdd72530e32f7503347", 
-            "name": "New fresh Page",
-            "template_id": "53ba7fc872530e577f35c442",
-            "db": {
-                "headline": {
-                    "type": "input", 
-                    "name": "Page headline", 
-                    "value": "My super page"
-                },
-                "content": {
-                    "type": "textarea",
-                    "name": "Content",
-                    "value": "Ridiculus ltrices porttitor eros, nisi diam tempor ac"
-                },
-                "background": {
-                    "type": "customType",
-                    "name": "Background color",
-                    "value": "#ccc"
-                }
-            },
-            "html": "<h1>Hello Page</h1>"
-        }
+        { "id": "53c3dbdd72530e32f7503347", "name": "New fresh Page" }
 
-## Page [/pages/{page_id}]
+## Page [/pages/{id}]
 A single Page object with all its details
 
 + Parameters
-    + page_id (required, string, `53c3dbdd72530e32f7503347`) ... Hash string `id` of the Page to perform action with. Has example value.
+    + id (required, string, `53c3dbdd72530e32f7503347`) ... Hash string `id` of the Page to perform action with. Has example value.
 
 ### Retrieve a Page [GET]
 + Response 200 (application/json)
 
-        { 
-            "id": "53c3dbdd72530e32f7503347", 
-            "name": "New fresh Page",
-            "template_id": "53ba7fc872530e577f35c442",
-            "db": {
-                "headline": {
-                    "type": "input", 
-                    "name": "Page headline", 
-                    "value": "My super page"
-                },
-                "content": {
-                    "type": "textarea",
-                    "name": "Content",
-                    "value": "Ridiculus ltrices porttitor eros, nisi diam tempor ac"
-                },
-                "background": {
-                    "type": "customType",
-                    "name": "Background color",
-                    "value": "#ccc"
-                }
-            },
-            "html": "<h1>Hello Page</h1>"
-        }
+    + Body
+
+            { "id": "53c3dbdd72530e32f7503347", "name": "My awesome page" }
 
 ### Update a Page [PUT]
 + Request (application/json)
 
-        { 
-            "name": "Updated Page",
-            "db": {
-                "headline": {
-                    "value": "My new value"
-                },
-                "content": {
-                    "value": "changed textarea value"
-                },
-                "background": {
-                    "value": "#999"
-                }
-            }
-        }
+        { "name": "Updated Page" }
         
 + Response 200 (application/json)
 
-        { 
-            "id": "53c3dbdd72530e32f7503347", 
-            "name": "New fresh Page",
-            "template_id": "53ba7fc872530e577f35c442",
-            "db": {
-                "headline": {
-                    "type": "input", 
-                    "name": "Page headline", 
-                    "value": "My new value"
-                },
-                "content": {
-                    "type": "textarea",
-                    "name": "Content",
-                    "value": "changed textarea value"
-                },
-                "background": {
-                    "type": "customType",
-                    "name": "Background color",
-                    "value": "#999"
-                }
-            },
-            "html": "<h1>Hello Page</h1>"
-        }
+    + Body
+    
+            { "id": "53c3dbdd72530e32f7503347", "name": "Updated Page" }
 
 ### Remove a Page [DELETE]
 + Response 204
-
-+ Response 404
- 
-        { 
-            "error": "Resource not found"
-        }
