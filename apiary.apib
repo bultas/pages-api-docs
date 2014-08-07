@@ -37,8 +37,14 @@ A single Page object with all its details
 + Response 200 (application/json)
 
     + Body
-
-            { "id": "53c3dbdd72530e32f7503347", "name": "My awesome page" }
+    
+            { 
+                "id": "53c3dbdd72530e32f7503347", 
+                "name": "My awesome page",
+                "db": {
+                    "test": "test"
+                }
+            }
 
 ### Update a Page [PUT]
 + Request (application/json)
