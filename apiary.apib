@@ -1,6 +1,6 @@
 FORMAT: 1A
 HOST: http://www.pages.com
-VERSION: 0.4.0
+VERSION: 0.5.0
 
 # Pages
 Content management system
@@ -42,7 +42,7 @@ Users are owners of Pages. User can have many Pages.
     
     + Headers
     
-            Set-Cookie:  expires=Mon, 30-Jul-2014 09:12:42 GMT; AuthToken={token};
+            Set-Cookie:  expires=Mon, 30-Jul-2014 09:12:42 GMT; authToken={token};
 
 ## Logout [/user/logout]
 ### Logout [GET]
@@ -60,26 +60,24 @@ Basic operation with users Pages
         {"pages":
             [
                 { 
-                    "id": "53ba7fc872530e577f35c699", 
-                    "template": "53ba7fc872530e577f35c442",
+                    "id": "53ba7fc872530e577f35c699",
                     "db": {
                         "name": "Page numero uno",
                         "description": "My awesome page about something special",
                         "image": "http://image-url.com/image.jpg",
                         "content": "<html string>"
                     },
-                    "url": "http://pages.com/53ba7fc872530e577f35c699"
+                    html: "<Page html>"
                 },
                 { 
-                    "id": "53c3dbdd72530e32f7503347", 
-                    "template": "53ba7fc872530e577f35c442",
+                    "id": "53c3dbdd72530e32f7503347",
                     "db": {
                         "name": "My awesome page",
                         "description": "My awesome page about something special",
                         "image": "http://image-url.com/image.jpg",
                         "content": "<html string>"
                     },
-                    "url": "http://pages.com/53c3dbdd72530e32f7503347"
+                    html: "<Page html>"
                 }
             ]
         }
@@ -87,20 +85,27 @@ Basic operation with users Pages
 ### Create a Page [POST]
 + Request (application/json)
 
-        { "template": "53ba7fc872530e577f35c442" }
+        { 
+            "db": {
+                "name": "Page numero uno",
+                "description": "My awesome page about something special",
+                "image": "http://image-url.com/image.jpg",
+                "content": "<html string>"
+            },
+            html: "<Page html>"
+        }
 
 + Response 201 (application/json)
 
         { 
             "id": "53c3dbdd72530e32f7503347", 
-            "template": "53ba7fc872530e577f35c442",
             "db": {
-                "name": "My awesome page",
+                "name": "Page numero uno",
                 "description": "My awesome page about something special",
                 "image": "http://image-url.com/image.jpg",
                 "content": "<html string>"
             },
-            "url": "http://pages.com/53c3dbdd72530e32f7503347"
+            html: "<Page html>"
         }
 
 ## Page [/pages/{page_id}]
@@ -113,44 +118,41 @@ A single Page object with all its details
 + Response 200 (application/json)
 
         { 
-            "id": "53c3dbdd72530e32f7503347", 
-            "template": "53ba7fc872530e577f35c442",
+            "id": "53c3dbdd72530e32f7503347",
             "db": {
                 "name": "My awesome page",
                 "description": "My awesome page about something special",
                 "image": "http://image-url.com/image.jpg",
                 "content": "<html string>"
             },
-            "url": "http://pages.com/53c3dbdd72530e32f7503347"
+            html: "<Page html>"
         }
 
 ### Update a Page [PUT]
 + Request (application/json)
 
         { 
-            "id": "53c3dbdd72530e32f7503347", 
-            "template": "53ba7fc872530e577f35c442",
+            "id": "53c3dbdd72530e32f7503347",
             "db": {
                 "name": "Updated Page",
                 "description": "My awesome page about something special",
                 "image": "http://image-url.com/image.jpg",
                 "content": "<html string>"
             },
-            "url": "http://pages.com/53c3dbdd72530e32f7503347"
+            html: "<Page html>"
         }
         
 + Response 200 (application/json)
 
         { 
-            "id": "53c3dbdd72530e32f7503347", 
-            "template": "53ba7fc872530e577f35c442",
+            "id": "53c3dbdd72530e32f7503347",
             "db": {
                 "name": "Updated Page",
                 "description": "My awesome page about something special",
                 "image": "http://image-url.com/image.jpg",
                 "content": "<html string>"
             },
-            "url": "http://pages.com/53c3dbdd72530e32f7503347"
+            html: "<Page html>"
         }
 
 ### Delete a Page [DELETE]
