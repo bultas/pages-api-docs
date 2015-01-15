@@ -59,6 +59,12 @@ Basic operation with users Pages
 
 ## Pages Collection [/pages]
 ### List all Pages [GET]
++ Request (application/json)
+
+    + Headers
+        
+            X-Auth-Token: "token_string"
+
 + Response 200 (application/json)
 
         [
@@ -87,15 +93,21 @@ Basic operation with users Pages
 ### Create a Page [POST]
 + Request (application/json)
 
-        { 
-            "db": {
-                "name": "Page numero uno",
-                "description": "My awesome page about something special",
-                "image": "http://image-url.com/image.jpg",
-                "content": "<html string>"
-            },
-            html: "<Page html>"
-        }
+    + Headers
+        
+            X-Auth-Token: "token_string"
+
+    + Body
+    
+            { 
+                "db": {
+                    "name": "Page numero uno",
+                    "description": "My awesome page about something special",
+                    "image": "http://image-url.com/image.jpg",
+                    "content": "<html string>"
+                },
+                html: "<Page html>"
+            }
 
 + Response 201 (application/json)
 
@@ -117,6 +129,12 @@ A single Page object with all its details
     + page_id (required, string, `53c3dbdd72530e32f7503347`) ... Hash string `id` of the Page to perform action with. Has example value.
 
 ### Retrieve a Page [GET]
++ Request (application/json)
+
+    + Headers
+        
+            X-Auth-Token: "token_string"
+
 + Response 200 (application/json)
 
         { 
@@ -133,16 +151,21 @@ A single Page object with all its details
 ### Update a Page [PUT]
 + Request (application/json)
 
-        { 
-            "id": "53c3dbdd72530e32f7503347",
-            "db": {
-                "name": "Updated Page",
-                "description": "My awesome page about something special",
-                "image": "http://image-url.com/image.jpg",
-                "content": "<html string>"
-            },
-            html: "<Page html>"
-        }
+    + Headers
+        
+            X-Auth-Token: "token_string"
+    + Body
+    
+            { 
+                "id": "53c3dbdd72530e32f7503347",
+                "db": {
+                    "name": "Updated Page",
+                    "description": "My awesome page about something special",
+                    "image": "http://image-url.com/image.jpg",
+                    "content": "<html string>"
+                },
+                html: "<Page html>"
+            }
         
 + Response 200 (application/json)
 
@@ -158,6 +181,12 @@ A single Page object with all its details
         }
 
 ### Delete a Page [DELETE]
++ Request (application/json)
+
+    + Headers
+        
+            X-Auth-Token: "token_string"
+
 + Response 204
 
 + Response 404
