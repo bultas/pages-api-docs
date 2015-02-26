@@ -1,26 +1,26 @@
 FORMAT: 1A
 HOST: http://www.pages.com
-VERSION: 0.5.1
+VERSION: 0.6.0
 
 # Pages
 Content management system
 
-## Allowed HTTPs requests:
+## Allowed HTTP requests
 
 - `POST` - Creates a resource
 - `PUT` - Updates a resource
-- `PATCH` - Partially updates a resource
-- `GET` - Retrieves a resource or list of resources
-- `DELETE` - Delete a resource
+- `GET` - Retrieves a resource or a list of resources
+- `DELETE` - Deletes a resource
 
-## Typical Server Responses
+## Typical server responses
 
-- 200 `OK` - The request was successful (some API calls may return 201 instead).
-- 201 `Created` - The request was successful and a resource was created.
-- 400 `Bad Request` - The request could not be understood or was missing required parameters.
-- 401 `Unauthorized` - Authentication token is invalid or expired (try login again)
-- 403 `Forbidden` - Access denied. 
-- 404 `Not Found` - Resource was not found.
+- 200 `OK` - The request was successful (some API calls may return 201 or 204 instead).
+- 201 `Created` - The request was successful, and a resource was created.
+- 204 `No Content` - The request was successful, but no content is returned.
+- 400 `Bad Request` - The request wasn't understood or was missing the required parameters.
+- 401 `Unauthorized` - Authentication token is invalid or has expired. (Try logging in again.)
+- 403 `Forbidden` - Access denied.
+- 404 `Not Found` - The requested resource wasn't found.
 
 
 
