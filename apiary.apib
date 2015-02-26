@@ -31,14 +31,14 @@ Users are owners of Pages. User can have many Pages.
 ### Create token [POST]
 
 + Request (application/json)
-    
+
         {
             "email":"user@email.com",
             "password":"password"
         }
 
 + Response 201 (application/json)
-    
+
         { 
             token: "token_string",
             expire_in: 86400
@@ -74,18 +74,20 @@ Basic operation with users Pages
                 "db": {
                     "name": "Page numero uno",
                     "description": "My awesome page about something special",
-                    "image": "http://static.simpledesktops.com/uploads/desktops/2015/01/12/Orange_Triangles.png",
+                    "image": null,
                     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tellus dolor. Nam placerat varius diam, eu tempor sem malesuada sed. Vivamus sit amet lectus ac libero consectetur fringilla a non eros. Donec congue dolor et eros malesuada accumsan. Duis sed condimentum augue. Fusce fermentum ac dui a viverra."
-                }
+                },
+                "page_url": "http://localhost:8000/page.html"
             },
             { 
                 "id": "53c3dbdd72530e32f7503347",
                 "db": {
                     "name": "My awesome page",
                     "description": "My awesome page about something special",
-                    "image": "http://static.simpledesktops.com/uploads/desktops/2015/01/12/Orange_Triangles.png",
+                    "image": null,
                     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tellus dolor. Nam placerat varius diam, eu tempor sem malesuada sed. Vivamus sit amet lectus ac libero consectetur fringilla a non eros. Donec congue dolor et eros malesuada accumsan. Duis sed condimentum augue. Fusce fermentum ac dui a viverra."
-                }
+                },
+                "page_url": "http://localhost:8000/page.html"
             }
         ]
 
@@ -95,14 +97,14 @@ Basic operation with users Pages
     + Headers
         
             X-Auth-Token: token_string
-
+            
     + Body
     
             { 
                 "db": {
                     "name": "Page numero uno",
                     "description": "My awesome page about something special",
-                    "image": "http://static.simpledesktops.com/uploads/desktops/2015/01/12/Orange_Triangles.png",
+                    "image": null,
                     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tellus dolor. Nam placerat varius diam, eu tempor sem malesuada sed. Vivamus sit amet lectus ac libero consectetur fringilla a non eros. Donec congue dolor et eros malesuada accumsan. Duis sed condimentum augue. Fusce fermentum ac dui a viverra.",
                 }
             }
@@ -114,9 +116,10 @@ Basic operation with users Pages
             "db": {
                 "name": "Page numero uno",
                 "description": "My awesome page about something special",
-                "image": "http://static.simpledesktops.com/uploads/desktops/2015/01/12/Orange_Triangles.png",
+                "image": null,
                 "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tellus dolor. Nam placerat varius diam, eu tempor sem malesuada sed. Vivamus sit amet lectus ac libero consectetur fringilla a non eros. Donec congue dolor et eros malesuada accumsan. Duis sed condimentum augue. Fusce fermentum ac dui a viverra."
-            }
+            },
+            "page_url": "http://localhost:8000/page.html"
         }
 
 ## Page [/pages/{page_id}]
@@ -135,9 +138,10 @@ A single Page object with all its details
             "db": {
                 "name": "Hello World",
                 "description": "My awesome page about something special",
-                "image": "http://static.simpledesktops.com/uploads/desktops/2015/01/12/Orange_Triangles.png",
+                "image": null,
                 "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tellus dolor. Nam placerat varius diam, eu tempor sem malesuada sed. Vivamus sit amet lectus ac libero consectetur fringilla a non eros. Donec congue dolor et eros malesuada accumsan. Duis sed condimentum augue. Fusce fermentum ac dui a viverra."
-            }
+            },
+            "page_url": "http://localhost:8000/page.html"
         }
 
 ### Update a Page [PUT]
@@ -154,9 +158,10 @@ A single Page object with all its details
                 "db": {
                     "name": "Updated Page",
                     "description": "My awesome page about something special",
-                    "image": "http://static.simpledesktops.com/uploads/desktops/2015/01/12/Orange_Triangles.png",
+                    "image": null,
                     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tellus dolor. Nam placerat varius diam, eu tempor sem malesuada sed. Vivamus sit amet lectus ac libero consectetur fringilla a non eros. Donec congue dolor et eros malesuada accumsan. Duis sed condimentum augue. Fusce fermentum ac dui a viverra."
-                }
+                },
+                "page_url": "http://localhost:8000/page.html"
             }
         
 + Response 200 (application/json)
@@ -166,9 +171,10 @@ A single Page object with all its details
             "db": {
                 "name": "Updated Page",
                 "description": "My awesome page about something special",
-                "image": "http://static.simpledesktops.com/uploads/desktops/2015/01/12/Orange_Triangles.png",
+                "image": null,
                 "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tellus dolor. Nam placerat varius diam, eu tempor sem malesuada sed. Vivamus sit amet lectus ac libero consectetur fringilla a non eros. Donec congue dolor et eros malesuada accumsan. Duis sed condimentum augue. Fusce fermentum ac dui a viverra."
-            }
+            },
+            "page_url": "http://localhost:8000/page.html"
         }
 
 ### Delete a Page [DELETE]
@@ -181,7 +187,7 @@ A single Page object with all its details
 + Response 204
 
 + Response 404
- 
+
         { 
             "error": "Resource not found"
         }
