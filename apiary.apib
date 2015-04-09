@@ -61,10 +61,12 @@ File operations
 ## Files upload sign [/files/sign?name={name}&type={type}]
 ### Sign file for upload to Amazon S3 [GET]
 + Parameters
+
     + name (required, string, `image.png`) ... Uploaded filename.
     + type (required, string, `image/png`) ... Uploaded file mimetype.
     
 + Request (application/json)
+
     + Headers
     
             X-Auth-Token: token_string
