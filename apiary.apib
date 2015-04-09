@@ -1,6 +1,6 @@
 FORMAT: 1A
 HOST: http://www.pages.com
-VERSION: 0.6.0
+VERSION: 0.6.1
 
 # Pages
 Content management system
@@ -54,6 +54,28 @@ Users are owners of Pages. User can have many Pages.
 ### Delete token [DELETE]
 + Response 204
 
+
+# Group Files
+File operations
+
+## Files upload sign [/files/sign?name={name}&type={type}]
+### Sign file for upload to Amazon S3 [GET]
++ Parameters
+    + name (required, string, `image.png`) ... Uploaded filename.
+    + type (required, string, `image/png`) ... Uploaded file mimetype.
+    
++ Request (application/json)
+    + Headers
+    
+            X-Auth-Token: token_string
+
++ Response 200 (application/json)
+
+        {
+            "signed_upload_url": "https://ccpages.s3.amazonaws.com/user_id/image.png?AWSAccessKeyId=ABCDEFMNHP1234567890&Expires=1428572002&Signature=k03muD8Y3qvmwJ0O%2FodRjnqWQM4%3D",
+            "url": "https://ccpages.s3.amazonaws.com/user_id/image.png",
+            "path": "user_id/image.png"
+        }
 
 
 # Group Pages
